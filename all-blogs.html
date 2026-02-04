@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>All Blogs | Trisentrix</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      background: #5f4b8b;
+      margin: 0;
+      font-family: Inter, sans-serif;
+      color: #0f172a;
+    }
+
+    .wrapper {
+      max-width: 1200px;
+      margin: 80px auto 120px;
+      padding: 0 24px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #fff;
+      margin-bottom: 50px;
+    }
+
+    .blogs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+      gap: 28px;
+    }
+
+    .blog-card {
+      background: #fffacd;
+      border-radius: 20px;
+      padding: 26px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
+
+    .blog-card h3 {
+      font-size: 18px;
+    }
+
+    .blog-card p {
+      color: #475569;
+    }
+
+    .blog-card a {
+      color: #3f78e0;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    #pagination {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 60px;
+    }
+
+    .page-link {
+      background: #fffacd;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-weight: 700;
+      color: #3f78e0;
+      text-decoration: none;
+    }
+
+    .page-link.active {
+      background: #3f78e0;
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="wrapper">
+  <h1>All Blogs</h1>
+
+  <div id="all-blogs-list" class="blogs-grid"></div>
+  <div id="pagination"></div>
+</div>
+
+<script>
+const BLOGS_PER_PAGE = 10;
+const page = parseInt(new URLSearchParams(window.location.search).get('page')) || 1;
+
+fetch('./data/blogs.json')
+  .then(res => res.json())
+  .then(blogs => {
+    const start = (page - 1) * BLOGS_PER_PAGE;
+    const end = start + BLOGS_PER_PAGE;
+    const visible = blogs.slice(start, end);
+
+    const container = document.getElementById('all-blogs-list');
+    visible.forEach(blog => {
+      container.innerHTML += `
+        <div class="blog-card">
+          <h3>${blog.title}</h3>
+          <small>${blog.date}</small>
+          <p>${blog.excerpt}</p>
+          <a href="${blog.url}">Read full blog →</a>
+        </div>
+      `;
+    });
+
+    const totalPages = Math.ceil(blogs.length / BLOGS_PER_PAGE);
+    const pagination = document.getElementById('pagination');
+
+    for (let i = 1; i <= totalPages; i++) {
+      pagination.innerHTML += `
+        <a href="?page=${i}" class="page-link ${i === page ? 'active' : ''}">
+          ${i}
+        </a>
+      `;
+    }
+  });
+</script>
+
+</body>
+</html>
