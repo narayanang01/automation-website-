@@ -308,6 +308,8 @@
       margin: 0 auto;
     }
 
+
+
     /* WHY READ TRISENTRIX BLOGS */
     .why-blogs {
       max-width: 720px;
@@ -328,11 +330,31 @@
       color: #6b7280;
     }
 
+    footer {
+      width: 100vw;
+      margin-left: calc(-50vw + 50%);
+      background: #21262c;
+    }
+
+    /* ================= FINAL STICKY FOOTER FIX ================= */
+
+    html, body {
+      min-height: 100vh;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+    }
+
+    footer {
+      margin-top: auto;
+    }
+
   </style>
 </head>
 
 <body>
-<div class="grow shrink-0">
 
   <!-- ================= HEADER (MASTER – SAME AS ABOUT/CAREER) ================= -->
   <header class="relative wrapper !bg-[#ffffff]">
@@ -381,14 +403,14 @@
 
       </div>
     </nav>
-  </header>
 
-  <!-- HERO IMAGE BELOW HEADER -->
-</header>
 
+<!-- HERO IMAGE BELOW HEADER -->
 <section class="hero-image">
   <img src="./assets/img/trise/hero-image.png" alt="Trisentrix Blogs">
 </section>
+
+
 
 <section class="blog-intro">
   <h2>Insights That Drive Strategic Growth</h2>
@@ -525,8 +547,6 @@
   <script src="./assets/js/plugins.js"></script>
   <script src="./assets/js/theme.js"></script>
 </body>
-
-</div>
 
 <script>
 fetch('./data/blogs.json')
