@@ -283,6 +283,66 @@
       }
     }
 
+    .why-trisentrix {
+      background: #f4f7fe;
+      padding: 80px 0 90px;
+      text-align: center;
+    }
+
+    .why-trisentrix h2 {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 14px;
+      color: #0f172a;
+    }
+
+    .why-subtext {
+      max-width: 720px;
+      margin: 0 auto 50px;
+      font-size: 17px;
+      color: #475569;
+      line-height: 1.7;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 30px;
+    }
+
+    .why-card {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 34px 26px;
+      box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
+    }
+
+    .why-icon {
+      font-size: 36px;
+      display: block;
+      margin-bottom: 14px;
+    }
+
+    .why-card h4 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #0f172a;
+    }
+
+    .why-card p {
+      font-size: 15px;
+      line-height: 1.6;
+      color: #475569;
+    }
+
+    .blog-card {
+      transition: background-color 0.4s ease, transform 0.3s ease;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-4px);
+    }
 
   </style>
 </head>
@@ -303,7 +363,7 @@
       <div class="navbar-collapse offcanvas offcanvas-nav offcanvas-start">
         <div class="offcanvas-header xl:!hidden lg:!hidden flex items-center justify-between p-6">
           <h3 class="!text-white !mb-0">Trisentrix</h3>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+          <button type="button" class="hamburger offcanvas-nav-btn" aria-label="Open navigation menu"><span></span></button>
         </div>
 
         <div class="offcanvas-body xl:!ml-auto lg:!ml-auto flex flex-col !h-full">
@@ -335,12 +395,52 @@
   </nav>
 </header>
 
-<section class="all-blogs-banner">
+<section class="all-blogs-banner" id="allblogs-hero">
   <img 
     src="assets/img/trise/all-blogs.png"
     alt="All Blogs"
     class="all-blogs-banner-img"
   />
+</section>
+
+<!-- WHY READ TRISENTRIX BLOGS -->
+<section class="why-trisentrix" id="allblogs-why">
+  <div class="container">
+    <h2>Why Read Trisentrix Blogs?</h2>
+    <p class="why-subtext">
+      Our blogs are written for technology leaders who want clarity,
+      scalability, and real-world architectural direction — not theory.
+    </p>
+
+    <div class="why-grid">
+      <div class="why-card">
+        <span class="why-icon">🧠</span>
+        <h4>Architecture-First Thinking</h4>
+        <p>
+          Every article starts from system design fundamentals,
+          not tools or trends.
+        </p>
+      </div>
+
+      <div class="why-card">
+        <span class="why-icon">⚙️</span>
+        <h4>Real-World Implementation</h4>
+        <p>
+          Patterns and frameworks validated in real enterprise
+          deployments.
+        </p>
+      </div>
+
+      <div class="why-card">
+        <span class="why-icon">📈</span>
+        <h4>Built for Tech Leaders</h4>
+        <p>
+          Written for CTOs, architects, and engineering leaders
+          driving scale.
+        </p>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- ================= PAGE CONTENT ================= -->
@@ -450,22 +550,70 @@
 
 
 <script>
-const BLOGS_PER_PAGE = 10;
-const page = parseInt(new URLSearchParams(window.location.search).get('page')) || 1;
+
+const bgColors = [
+  '#f4f7fe',
+  '#eefaf5',
+  '#fff7ed',
+  '#fef2f2',
+  '#f0f9ff',
+  '#f5f3ff',
+  '#ecfeff',
+  '#f7fee7',
+  '#fff1f2',
+  '#f8fafc',
+  '#fdf4ff',
+  '#fefce8',
+  '#eff6ff',
+  '#ecfdf5',
+  '#faf5ff'
+];
+
+const FIRST_PAGE_COUNT = 6;
+const OTHER_PAGE_COUNT = 9;
+
+// current page from URL (?page=2)
+const page =
+  parseInt(new URLSearchParams(window.location.search).get('page')) || 1;
 
 fetch('./data/blogs.json')
   .then(res => res.json())
   .then(blogs => {
-    const start = (page - 1) * BLOGS_PER_PAGE;
-    const end = start + BLOGS_PER_PAGE;
-    const visible = blogs.slice(start, end);
+
+    // Sort latest first (IMPORTANT)
+    blogs.sort((a, b) => new Date(b.date) - new Date(a.date));
 
     const container = document.getElementById('all-blogs-list');
+    const pagination = document.getElementById('pagination');
+    const hero = document.getElementById('allblogs-hero');
+    const why = document.getElementById('allblogs-why');
+
+    // Hide hero + why on page 2+
+    if (page > 1) {
+      if (hero) hero.style.display = 'none';
+      if (why) why.style.display = 'none';
+    }
+
+    // Decide slice range
+    let start, end;
+
+    if (page === 1) {
+      start = 0;
+      end = FIRST_PAGE_COUNT; // 6 blogs
+    } else {
+      start = FIRST_PAGE_COUNT + (page - 2) * OTHER_PAGE_COUNT;
+      end = start + OTHER_PAGE_COUNT; // 9 blogs
+    }
+
+    const visible = blogs.slice(start, end);
+
+    // Render blogs
     container.innerHTML = '';
 
-    visible.forEach(blog => {
+    visible.forEach((blog, index) => {
       container.innerHTML += `
-        <div class="blog-card">
+        <div class="blog-card"
+            style="background:${bgColors[index % bgColors.length]}">
           <h3>${blog.title}</h3>
           <small>${blog.date}</small>
           <p>${blog.excerpt}</p>
@@ -474,8 +622,12 @@ fetch('./data/blogs.json')
       `;
     });
 
-    const totalPages = Math.ceil(blogs.length / BLOGS_PER_PAGE);
-    const pagination = document.getElementById('pagination');
+
+    // Total pages calculation
+    const remaining = blogs.length - FIRST_PAGE_COUNT;
+    const totalPages = 1 + Math.ceil(remaining / OTHER_PAGE_COUNT);
+
+    // Render pagination
     pagination.innerHTML = '';
 
     for (let i = 1; i <= totalPages; i++) {
@@ -485,8 +637,9 @@ fetch('./data/blogs.json')
         </a>
       `;
     }
+  })
+  .catch(err => {
+    console.error('Error loading blogs:', err);
   });
 </script>
 
-</body>
-</html>

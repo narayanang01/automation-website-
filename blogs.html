@@ -192,10 +192,14 @@
     }
 
     .featured-card {
-      background: #ffffff;
-      border-radius: 16px;
-      padding: 20px;
-      box-shadow: 0 15px 30px rgba(0,0,0,0.06);
+      display: flex;                 /* IMPORTANT */
+      gap: 20px;
+      align-items: center;
+
+      border-radius: 18px;
+      padding: 26px;
+      max-width: 720px;
+      transition: transform 0.6s ease, background-color 0.6s ease;
     }
 
     .featured-card img {
@@ -209,6 +213,8 @@
       margin-bottom: 8px;
     }
 
+
+
     .featured-card p {
       font-size: 14px;
       color: #475569;
@@ -218,19 +224,16 @@
       color: #64748b;
     }
 
-    /* FEATURED READS SLIDER */
     .featured-slider {
+      display: flex;
+      justify-content: center;   /* HORIZONTAL CENTER */
+      align-items: center;
       overflow: hidden;
-      position: relative;
+      width: 100%;
     }
 
-    #featured-reads-list {
-      display: flex;
-      gap: 30px;
-      overflow-x: auto;
-      scroll-behavior: smooth;
-      padding-bottom: 10px;
-      align-items: stretch;   /* ADD THIS */
+    .featured-card {
+      margin: 0 auto;          /* CENTER fallback */
     }
 
 
@@ -269,7 +272,7 @@
       height: 60px;              /* FIXED */
       overflow: hidden;
     }
-
+    
     /* Explore More Blogs Button */
     .explore-blogs-wrapper {
       text-align: center;
@@ -330,31 +333,58 @@
       color: #6b7280;
     }
 
-    footer {
-      width: 100vw;
-      margin-left: calc(-50vw + 50%);
+
+    .site-footer {
+      width: 100%;
       background: #21262c;
     }
 
-    /* ================= FINAL STICKY FOOTER FIX ================= */
-
-    html, body {
-      min-height: 100vh;
+    .footer-inner {
+      width: 100%;
     }
 
-    body {
+    .featured-card img {
+      width: 180px;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 12px;
+      flex-shrink: 0;     /* image shrink aagakoodadhu */
+    }
+
+    .featured-content {
       display: flex;
       flex-direction: column;
     }
 
-    footer {
-      margin-top: auto;
+    .swipe-left {
+      animation: swipeLeft 0.6s ease;
     }
+
+    @keyframes swipeLeft {
+      from {
+        opacity: 0;
+        transform: translateX(60px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .featured-title {
+      text-align: center;
+      margin-bottom: 24px;
+      font-size: 26px;
+      font-weight: 600;
+      color: #1f2937;
+    }
+
 
   </style>
 </head>
 
 <body>
+<div class="grow shrink-0">
 
   <!-- ================= HEADER (MASTER – SAME AS ABOUT/CAREER) ================= -->
   <header class="relative wrapper !bg-[#ffffff]">
@@ -428,12 +458,16 @@
   <!-- Latest blog -->
   </section>
 
- <section class="featured-reads">
-  <h2 class="section-title">Featured Reads</h2>
-
+  <h2 class="section-title featured-title">
+  Featured Reads
+  </h2>
+<div class="featured-row">
   <div class="featured-slider">
-    <div id="featured-reads-list"></div>
+    <div id="featured-card"></div>
   </div>
+  
+</div>
+
   <div class="explore-blogs-wrapper">
     <a href="all-blogs.html" class="explore-blogs-btn">
       Explore More Blogs →
@@ -448,13 +482,165 @@
   </p>
 </div>
 
-
 </section>
 
- 
+<script>
 
-  <!-- ================= FOOTER (MASTER – SAME AS ABOUT/CAREER) ================= -->
-<footer class="!bg-[#21262c] shrink-0">
+const bgColors = [
+  '#f4f7fe', // soft blue
+  '#eefaf5', // mint
+  '#fff7ed', // warm peach
+  '#fef2f2', // soft red
+  '#f0f9ff', // sky blue
+  '#f5f3ff', // lavender
+  '#ecfeff', // cyan mist
+  '#f7fee7', // lime pastel
+  '#fff1f2', // rose
+  '#f8fafc', // cool gray
+  '#fdf4ff', // soft purple
+  '#fefce8', // pale yellow
+  '#eff6ff', // light indigo
+  '#ecfdf5', // light emerald
+  '#faf5ff'  // ultra light violet
+];
+
+
+
+fetch('./data/blogs.json')
+  .then(res => res.json())
+  .then(blogs => {
+
+    if (!blogs.length) return;
+
+    // 1️⃣ Sort blogs by latest
+    blogs.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    // 2️⃣ Latest blog (main featured)
+    const latestBlog = blogs[0];
+
+    document.getElementById('main-featured-blog').innerHTML = `
+      <div class="main-featured-card">
+        <img src="${latestBlog.image}" alt="${latestBlog.title}">
+        <div class="main-featured-content">
+          <small>Latest Read</small>
+          <h2>${latestBlog.title}</h2>
+          <p>${latestBlog.excerpt}</p>
+          <small>${latestBlog.date}</small><br>
+          <a href="${latestBlog.url}">Read full blog →</a>
+        </div>
+      </div>
+    `;
+
+    // 3️⃣ Remove latest blog from list
+    const remainingBlogs = blogs.slice(1);
+
+    // 4️⃣ Shuffle remaining blogs (RANDOM)
+    const shuffled = remainingBlogs.sort(() => 0.5 - Math.random());
+
+    // 5️⃣ Pick first 4 for Featured Reads
+    const featuredBlogs = shuffled.slice(0, 4);
+
+    // 6️⃣ Render Featured Reads
+    const featuredContainer = document.getElementById('featured-card');
+
+    let currentIndex = 0;
+
+    // shuffle once (no repeat)
+    featuredBlogs.sort(() => Math.random() - 0.5);
+
+    function renderFeatured(blog) {
+      featuredContainer.innerHTML = `
+        <div class="featured-card swipe-left" style="background:${bgColors[currentIndex % bgColors.length]}">
+          <img src="${blog.image}" alt="${blog.title}">
+          <div class="featured-content">
+            <h3>${blog.title}</h3>
+            <p>${blog.excerpt}</p>
+            <small>${blog.date}</small>
+          </div>
+        </div>
+      `;
+
+      featuredContainer.onclick = () => {
+        window.location.href = 'all-blogs.html';
+      };
+    }
+
+    // first card
+    renderFeatured(featuredBlogs[currentIndex]);
+
+    // auto swipe
+    setInterval(() => {
+      currentIndex++;
+
+      if (currentIndex >= featuredBlogs.length) {
+        currentIndex = 0;
+      }
+
+      renderFeatured(featuredBlogs[currentIndex]);
+    }, 5000);
+
+  
+    // 7️⃣ Render remaining blogs (exclude featured ones)
+    const usedUrls = new Set(featuredBlogs.map(b => b.url));
+    const listContainer = document.getElementById('blog-list');
+    listContainer.innerHTML = '';
+
+    remainingBlogs.forEach(blog => {
+      if (usedUrls.has(blog.url)) return;
+
+      const div = document.createElement('div');
+      div.className = 'blog-card';
+      div.innerHTML = `
+        <img src="${blog.image}" alt="${blog.title}">
+        <h3>${blog.title}</h3>
+        <p>${blog.excerpt}</p>
+        <small>${blog.date}</small><br>
+        <a href="${blog.url}">Read full blog →</a>
+      `;
+      listContainer.appendChild(div);
+    });
+
+  })
+  .catch(() => {
+    document.getElementById('blog-list').innerHTML = '<p>Error loading blogs</p>';
+  });
+
+
+const slider = document.getElementById('featured-reads-list');
+
+let scrollAmount = 0;
+let autoScrollInterval;
+
+function startAutoScroll() {
+  autoScrollInterval = setInterval(() => {
+    slider.scrollBy({
+      left: 300,
+      behavior: 'smooth'
+    });
+
+    // Reset when end reached
+    if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth) {
+      slider.scrollTo({ left: 0, behavior: 'smooth' });
+    }
+  }, 3000); // every 3 seconds
+}
+
+function stopAutoScroll() {
+  clearInterval(autoScrollInterval);
+}
+
+// Start auto scroll
+startAutoScroll();
+
+// Pause on hover
+slider.addEventListener('mouseenter', stopAutoScroll);
+slider.addEventListener('mouseleave', startAutoScroll);
+
+</script>
+</div>
+ <!-- ================= FOOTER (MASTER – SAME AS ABOUT/CAREER) ================= -->
+<footer class="site-footer shrink-0">
+  <div class="footer-inner">
     <div class="container py-16 xl:!py-20 lg:!py-20 md:!py-20">
       <div class="flex flex-wrap mx-[-15px] !mt-[-30px] xl:!mt-0 lg:!mt-0">
         <div class="md:w-4/12 xl:w-3/12 lg:w-3/12 w-full flex-[0_0_auto] !px-[15px] max-w-full xl:!mt-0 lg:!mt-0 !mt-[30px]">
@@ -537,8 +723,8 @@
       </div>
       <!--/.row -->
     </div>
-    <!-- /.container -->
-  </footer>
+  </div>  <!-- /.container -->
+</footer>
   <div class="progress-wrap fixed w-[2.3rem] h-[2.3rem] cursor-pointer block shadow-[inset_0_0_0_0.1rem_rgba(128,130,134,0.25)] z-[1010] opacity-0 invisible translate-y-3 transition-all duration-[0.2s] ease-[linear,margin-right] delay-[0s] rounded-[100%] right-6 bottom-6 motion-reduce:transition-none after:absolute after:content-['\e951'] after:text-center after:leading-[2.3rem] after:text-[1.2rem] after:!text-[#3f78e0] after:h-[2.3rem] after:w-[2.3rem] after:cursor-pointer after:block after:z-[1] after:transition-all after:duration-[0.2s] after:ease-linear after:left-0 after:top-0 motion-reduce:after:transition-none after:font-Unicons">
     <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
       <path class="fill-none stroke-[#3f78e0] stroke-[4] box-border transition-all duration-[0.2s] ease-linear motion-reduce:transition-none" d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
@@ -547,112 +733,3 @@
   <script src="./assets/js/plugins.js"></script>
   <script src="./assets/js/theme.js"></script>
 </body>
-
-<script>
-fetch('./data/blogs.json')
-  .then(res => res.json())
-  .then(blogs => {
-
-    if (!blogs.length) return;
-
-    // 1️⃣ Sort blogs by latest
-    blogs.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-    // 2️⃣ Latest blog (main featured)
-    const latestBlog = blogs[0];
-
-    document.getElementById('main-featured-blog').innerHTML = `
-      <div class="main-featured-card">
-        <img src="${latestBlog.image}" alt="${latestBlog.title}">
-        <div class="main-featured-content">
-          <small>Latest Read</small>
-          <h2>${latestBlog.title}</h2>
-          <p>${latestBlog.excerpt}</p>
-          <small>${latestBlog.date}</small><br>
-          <a href="${latestBlog.url}">Read full blog →</a>
-        </div>
-      </div>
-    `;
-
-    // 3️⃣ Remove latest blog from list
-    const remainingBlogs = blogs.slice(1);
-
-    // 4️⃣ Shuffle remaining blogs (RANDOM)
-    const shuffled = remainingBlogs.sort(() => 0.5 - Math.random());
-
-    // 5️⃣ Pick first 4 for Featured Reads
-    const featuredBlogs = shuffled.slice(0, 4);
-
-    // 6️⃣ Render Featured Reads
-    const featuredContainer = document.getElementById('featured-reads-list');
-    featuredContainer.innerHTML = '';
-
-    featuredBlogs.forEach(blog => {
-      const div = document.createElement('div');
-      div.className = 'featured-card';
-      div.innerHTML = `
-        <img src="${blog.image}" alt="${blog.title}">
-        <h3>${blog.title}</h3>
-        <p>${blog.excerpt}</p>
-        <small>${blog.date}</small>
-      `;
-      featuredContainer.appendChild(div);
-    });
-
-    // 7️⃣ Render remaining blogs (exclude featured ones)
-    const usedUrls = new Set(featuredBlogs.map(b => b.url));
-    const listContainer = document.getElementById('blog-list');
-    listContainer.innerHTML = '';
-
-    remainingBlogs.forEach(blog => {
-      if (usedUrls.has(blog.url)) return;
-
-      const div = document.createElement('div');
-      div.className = 'blog-card';
-      div.innerHTML = `
-        <img src="${blog.image}" alt="${blog.title}">
-        <h3>${blog.title}</h3>
-        <p>${blog.excerpt}</p>
-        <small>${blog.date}</small><br>
-        <a href="${blog.url}">Read full blog →</a>
-      `;
-      listContainer.appendChild(div);
-    });
-
-  })
-  .catch(() => {
-    document.getElementById('blog-list').innerHTML = '<p>Error loading blogs</p>';
-  });
-
-
-const slider = document.getElementById('featured-reads-list');
-
-let scrollAmount = 0;
-let autoScrollInterval;
-
-function startAutoScroll() {
-  autoScrollInterval = setInterval(() => {
-    slider.scrollBy({
-      left: 300,
-      behavior: 'smooth'
-    });
-
-    // Reset when end reached
-    if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth) {
-      slider.scrollTo({ left: 0, behavior: 'smooth' });
-    }
-  }, 3000); // every 3 seconds
-}
-
-function stopAutoScroll() {
-  clearInterval(autoScrollInterval);
-}
-
-// Start auto scroll
-startAutoScroll();
-
-// Pause on hover
-slider.addEventListener('mouseenter', stopAutoScroll);
-slider.addEventListener('mouseleave', startAutoScroll);
-
-</script>

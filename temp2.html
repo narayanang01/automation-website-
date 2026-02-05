@@ -112,6 +112,273 @@
       will-change: transform;
     }
 
+    /* MAIN FEATURED BLOG */
+    #main-featured-blog {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 40px;
+      margin-bottom: 70px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    }
+
+    .main-featured-card {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .main-featured-card img {
+      width: 100%;
+      border-radius: 16px;
+    }
+
+    .main-featured-content h2 {
+      font-size: 32px;
+      margin-bottom: 12px;
+    }
+
+    .main-featured-content p {
+      font-size: 17px;
+      line-height: 1.7;
+      color: #475569;
+    }
+
+    .main-featured-content small {
+      color: #64748b;
+    }
+
+    .main-featured-content a {
+      display: inline-block;
+      margin-top: 16px;
+      font-weight: 600;
+      color: #3f78e0;
+      text-decoration: none;
+    }
+
+    .section-title {
+      font-size: 26px;
+      margin-bottom: 30px;
+    }
+
+    .blog-intro {
+      text-align: center;
+      max-width: 720px;
+      margin: 60px auto 40px;
+      padding: 0 20px;
+    }
+
+    .blog-intro h2 {
+      font-size: 28px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .blog-intro p {
+      color: #6b7280;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    /* FEATURED READS */
+    .featured-reads {
+      margin-bottom: 70px;
+    }
+
+    #featured-reads-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+    }
+
+    .featured-card {
+      display: flex;                 /* IMPORTANT */
+      gap: 20px;
+      align-items: center;
+
+      border-radius: 18px;
+      padding: 26px;
+      max-width: 720px;
+      transition: transform 0.6s ease, background-color 0.6s ease;
+    }
+
+    .featured-card img {
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 14px;
+    }
+
+    .featured-card h3 {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+
+
+    .featured-card p {
+      font-size: 14px;
+      color: #475569;
+    }
+
+    .featured-card small {
+      color: #64748b;
+    }
+
+    .featured-slider {
+      display: flex;
+      justify-content: center;   /* HORIZONTAL CENTER */
+      align-items: center;
+      overflow: hidden;
+      width: 100%;
+    }
+
+    .featured-card {
+      margin: 0 auto;          /* CENTER fallback */
+    }
+
+
+    /* Hide scrollbar */
+    #featured-reads-list::-webkit-scrollbar {
+      display: none;
+    }
+    #featured-reads-list {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    .featured-card {
+      flex: 0 0 340px;   /* fixed width */
+      max-width: 340px;
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 22px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.06);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .featured-card h3 {
+      font-size: 18px;
+      margin-bottom: 8px;
+      line-height: 1.4;
+      height: 50px;              /* FIXED */
+      overflow: hidden;
+    }
+
+    .featured-card p {
+      font-size: 14px;
+      color: #475569;
+      line-height: 1.5;
+      height: 60px;              /* FIXED */
+      overflow: hidden;
+    }
+    
+    /* Explore More Blogs Button */
+    .explore-blogs-wrapper {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .explore-blogs-btn {
+      display: inline-block;
+      padding: 14px 34px;
+      background: #3f78e0;
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 16px;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .explore-blogs-btn:hover {
+      background: #2f65c8;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(63,120,224,0.3);
+    }
+
+    /* FIX FOOTER FULL WIDTH */
+    .site-footer {
+      width: 100%;
+      background: #21262c;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Footer container stays centered */
+    .site-footer .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+
+
+    /* WHY READ TRISENTRIX BLOGS */
+    .why-blogs {
+      max-width: 720px;
+      margin: 80px auto 0;
+      text-align: center;
+    }
+
+    .why-blogs h3 {
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: 14px;
+      color: #1f2937;
+    }
+
+    .why-blogs p {
+      font-size: 16px;
+      line-height: 1.7;
+      color: #6b7280;
+    }
+
+
+    .site-footer {
+      width: 100%;
+      background: #21262c;
+    }
+
+    .footer-inner {
+      width: 100%;
+    }
+
+    .featured-card img {
+      width: 180px;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 12px;
+      flex-shrink: 0;     /* image shrink aagakoodadhu */
+    }
+
+    .featured-content {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .swipe-left {
+      animation: swipeLeft 0.6s ease;
+    }
+
+    @keyframes swipeLeft {
+      from {
+        opacity: 0;
+        transform: translateX(60px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .featured-title {
+      text-align: center;
+      margin-bottom: 24px;
+      font-size: 26px;
+      font-weight: 600;
+      color: #1f2937;
+    }
+
 
   </style>
 </head>
@@ -166,24 +433,214 @@
 
       </div>
     </nav>
-  </header>
 
-  <!-- HERO IMAGE BELOW HEADER -->
 
+<!-- HERO IMAGE BELOW HEADER -->
 <section class="hero-image">
   <img src="./assets/img/trise/hero-image.png" alt="Trisentrix Blogs">
 </section>
 
 
-  
-  <!-- ================= BLOG CONTENT ================= -->
-  <div class="blogs-wrapper">
-    <h1>Our Blogs</h1>
-    <div id="blog-list">Loading blogs...</div>
-  </div>
 
-  <!-- ================= FOOTER (MASTER – SAME AS ABOUT/CAREER) ================= -->
-<footer class="!bg-[#21262c] shrink-0">
+<section class="blog-intro">
+  <h2>Insights That Drive Strategic Growth</h2>
+  <p>
+    Explore frameworks, leadership ideas, and practical strategies
+    designed to help modern businesses scale with confidence.
+  </p>
+</section>
+
+
+ <!-- ================= BLOG CONTENT ================= -->
+<div class="blogs-wrapper">
+
+  <section id="main-featured-blog">
+  <!-- Latest blog -->
+  </section>
+
+  <h2 class="section-title featured-title">
+  Featured Reads
+  </h2>
+<div class="featured-row">
+  <div class="featured-slider">
+    <div id="featured-card"></div>
+  </div>
+  
+</div>
+
+  <div class="explore-blogs-wrapper">
+    <a href="all-blogs.html" class="explore-blogs-btn">
+      Explore More Blogs →
+    </a>
+  </div>
+  <div class="why-blogs">
+  <h3>Why Read Trisentrix Blogs?</h3>
+  <p>
+    Our blogs are crafted for technology leaders and architects seeking
+    clarity, scalability, and real-world implementation strategies
+    across modern enterprise systems.
+  </p>
+</div>
+
+</section>
+
+<script>
+
+const bgColors = [
+  '#f4f7fe', // soft blue
+  '#eefaf5', // mint
+  '#fff7ed', // warm peach
+  '#fef2f2', // soft red
+  '#f0f9ff', // sky blue
+  '#f5f3ff', // lavender
+  '#ecfeff', // cyan mist
+  '#f7fee7', // lime pastel
+  '#fff1f2', // rose
+  '#f8fafc', // cool gray
+  '#fdf4ff', // soft purple
+  '#fefce8', // pale yellow
+  '#eff6ff', // light indigo
+  '#ecfdf5', // light emerald
+  '#faf5ff'  // ultra light violet
+];
+
+
+
+fetch('./data/blogs.json')
+  .then(res => res.json())
+  .then(blogs => {
+
+    if (!blogs.length) return;
+
+    // 1️⃣ Sort blogs by latest
+    blogs.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    // 2️⃣ Latest blog (main featured)
+    const latestBlog = blogs[0];
+
+    document.getElementById('main-featured-blog').innerHTML = `
+      <div class="main-featured-card">
+        <img src="${latestBlog.image}" alt="${latestBlog.title}">
+        <div class="main-featured-content">
+          <small>Latest Read</small>
+          <h2>${latestBlog.title}</h2>
+          <p>${latestBlog.excerpt}</p>
+          <small>${latestBlog.date}</small><br>
+          <a href="${latestBlog.url}">Read full blog →</a>
+        </div>
+      </div>
+    `;
+
+    // 3️⃣ Remove latest blog from list
+    const remainingBlogs = blogs.slice(1);
+
+    // 4️⃣ Shuffle remaining blogs (RANDOM)
+    const shuffled = remainingBlogs.sort(() => 0.5 - Math.random());
+
+    // 5️⃣ Pick first 4 for Featured Reads
+    const featuredBlogs = shuffled.slice(0, 4);
+
+    // 6️⃣ Render Featured Reads
+    const featuredContainer = document.getElementById('featured-card');
+
+    let currentIndex = 0;
+
+    // shuffle once (no repeat)
+    featuredBlogs.sort(() => Math.random() - 0.5);
+
+    function renderFeatured(blog) {
+      featuredContainer.innerHTML = `
+        <div class="featured-card swipe-left" style="background:${bgColors[currentIndex % bgColors.length]}">
+          <img src="${blog.image}" alt="${blog.title}">
+          <div class="featured-content">
+            <h3>${blog.title}</h3>
+            <p>${blog.excerpt}</p>
+            <small>${blog.date}</small>
+          </div>
+        </div>
+      `;
+
+      featuredContainer.onclick = () => {
+        window.location.href = 'all-blogs.html';
+      };
+    }
+
+    // first card
+    renderFeatured(featuredBlogs[currentIndex]);
+
+    // auto swipe
+    setInterval(() => {
+      currentIndex++;
+
+      if (currentIndex >= featuredBlogs.length) {
+        currentIndex = 0;
+      }
+
+      renderFeatured(featuredBlogs[currentIndex]);
+    }, 5000);
+
+  
+    // 7️⃣ Render remaining blogs (exclude featured ones)
+    const usedUrls = new Set(featuredBlogs.map(b => b.url));
+    const listContainer = document.getElementById('blog-list');
+    listContainer.innerHTML = '';
+
+    remainingBlogs.forEach(blog => {
+      if (usedUrls.has(blog.url)) return;
+
+      const div = document.createElement('div');
+      div.className = 'blog-card';
+      div.innerHTML = `
+        <img src="${blog.image}" alt="${blog.title}">
+        <h3>${blog.title}</h3>
+        <p>${blog.excerpt}</p>
+        <small>${blog.date}</small><br>
+        <a href="${blog.url}">Read full blog →</a>
+      `;
+      listContainer.appendChild(div);
+    });
+
+  })
+  .catch(() => {
+    document.getElementById('blog-list').innerHTML = '<p>Error loading blogs</p>';
+  });
+
+
+const slider = document.getElementById('featured-reads-list');
+
+let scrollAmount = 0;
+let autoScrollInterval;
+
+function startAutoScroll() {
+  autoScrollInterval = setInterval(() => {
+    slider.scrollBy({
+      left: 300,
+      behavior: 'smooth'
+    });
+
+    // Reset when end reached
+    if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth) {
+      slider.scrollTo({ left: 0, behavior: 'smooth' });
+    }
+  }, 3000); // every 3 seconds
+}
+
+function stopAutoScroll() {
+  clearInterval(autoScrollInterval);
+}
+
+// Start auto scroll
+startAutoScroll();
+
+// Pause on hover
+slider.addEventListener('mouseenter', stopAutoScroll);
+slider.addEventListener('mouseleave', startAutoScroll);
+
+</script>
+</div>
+ <!-- ================= FOOTER (MASTER – SAME AS ABOUT/CAREER) ================= -->
+<footer class="site-footer shrink-0">
+  <div class="footer-inner">
     <div class="container py-16 xl:!py-20 lg:!py-20 md:!py-20">
       <div class="flex flex-wrap mx-[-15px] !mt-[-30px] xl:!mt-0 lg:!mt-0">
         <div class="md:w-4/12 xl:w-3/12 lg:w-3/12 w-full flex-[0_0_auto] !px-[15px] max-w-full xl:!mt-0 lg:!mt-0 !mt-[30px]">
@@ -266,8 +723,8 @@
       </div>
       <!--/.row -->
     </div>
-    <!-- /.container -->
-  </footer>
+  </div>  <!-- /.container -->
+</footer>
   <div class="progress-wrap fixed w-[2.3rem] h-[2.3rem] cursor-pointer block shadow-[inset_0_0_0_0.1rem_rgba(128,130,134,0.25)] z-[1010] opacity-0 invisible translate-y-3 transition-all duration-[0.2s] ease-[linear,margin-right] delay-[0s] rounded-[100%] right-6 bottom-6 motion-reduce:transition-none after:absolute after:content-['\e951'] after:text-center after:leading-[2.3rem] after:text-[1.2rem] after:!text-[#3f78e0] after:h-[2.3rem] after:w-[2.3rem] after:cursor-pointer after:block after:z-[1] after:transition-all after:duration-[0.2s] after:ease-linear after:left-0 after:top-0 motion-reduce:after:transition-none after:font-Unicons">
     <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
       <path class="fill-none stroke-[#3f78e0] stroke-[4] box-border transition-all duration-[0.2s] ease-linear motion-reduce:transition-none" d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
@@ -276,49 +733,3 @@
   <script src="./assets/js/plugins.js"></script>
   <script src="./assets/js/theme.js"></script>
 </body>
-
-</div>
-
-<script>
-  fetch('./data/blogs.json')
-    .then(res => res.json())
-    .then(blogs => {
-      const container = document.getElementById('blog-list');
-      container.innerHTML = '';
-
-      if (!blogs.length) {
-        container.innerHTML = '<p>No blogs available</p>';
-        return;
-      }
-
-      blogs.forEach(blog => {
-        const div = document.createElement('div');
-        div.className = 'blog-card';
-        div.innerHTML = `
-          <img src="${blog.image}" alt="${blog.title}">
-          <h3>${blog.title}</h3>
-          <p>${blog.excerpt}</p>
-          <small>${blog.date}</small><br>
-          <a href="${blog.url}">Read full blog →</a>
-        `;
-        container.appendChild(div);
-      });
-    })
-    .catch(() => {
-      document.getElementById('blog-list').innerHTML = '<p>Error loading blogs</p>';
-    });
-</script>
-
-<script src="./assets/js/plugins.js"></script>
-<script src="./assets/js/theme.js"></script>
-
-<script>
-  window.addEventListener("scroll", () => {
-    const img = document.querySelector(".hero-image img");
-    const offset = window.scrollY * 0.1;
-    img.style.transform = `translateY(${offset}px)`;
-  });
-</script>
-
-</body>
-</html>
