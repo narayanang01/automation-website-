@@ -236,6 +236,63 @@
       margin: 0 auto;          /* CENTER fallback */
     }
 
+    /* ===== Featured Layout with Side Quotes (Desktop Only) ===== */
+.featured-layout {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 40px;
+  margin-top: 40px;
+}
+
+/* Quote Card Style */
+.side-quote {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 30px 26px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+  max-width: 280px;
+  margin: 0 auto;
+  text-align: center;
+  animation: quoteFadeUp 1.2s ease-out both;
+}
+
+.quote-text {
+  font-size: 16px;
+  font-style: italic;
+  color: #1f2937;
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+
+.quote-author {
+  font-size: 14px;
+  font-weight: 600;
+  color: #3f78e0;
+}
+
+/* Subtle animation */
+@keyframes quoteFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 🔥 Hide quotes on tablets & mobile */
+@media (max-width: 1024px) {
+  .featured-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .side-quote {
+    display: none;
+  }
+}
 
     /* Hide scrollbar */
     #featured-reads-list::-webkit-scrollbar {
@@ -458,13 +515,24 @@
   <!-- Latest blog -->
   </section>
 
-  <h2 class="section-title featured-title">
+<h2 class="section-title featured-title">
   Featured Reads
-  </h2>
-<div class="featured-row">
-  <div class="featured-slider">
-    <div id="featured-card"></div>
+</h2>
+
+<div class="featured-layout">
+  <!-- Left Quote (desktop only) -->
+  <div class="side-quote left-quote"></div>
+
+  <!-- Center Featured Read (your existing block) -->
+  <div class="featured-row">
+    <div class="featured-slider">
+      <div id="featured-card"></div>
+    </div>
   </div>
+
+  <!-- Right Quote (desktop only) -->
+  <div class="side-quote right-quote"></div>
+</div>
   
 </div>
 
@@ -485,6 +553,64 @@
 </section>
 
 <script>
+  const quotes = [
+  { text: "Innovation distinguishes between a leader and a follower.", author: "Steve Jobs" },
+  { text: "The best way to predict the future is to create it.", author: "Peter Drucker" },
+  { text: "Simplicity is the ultimate sophistication.", author: "Leonardo da Vinci" },
+  { text: "Great vision without great people is irrelevant.", author: "Jim Collins" },
+  { text: "Move fast, but don’t break trust.", author: "Satya Nadella" },
+  { text: "In the middle of difficulty lies opportunity.", author: "Albert Einstein" },
+  { text: "Execution eats strategy for breakfast.", author: "Peter Drucker" },
+  { text: "First principles thinking is the key to breakthrough innovation.", author: "Elon Musk" },
+  { text: "You cannot manage what you cannot measure.", author: "W. Edwards Deming" },
+  { text: "Design is not just what it looks like and feels like. Design is how it works.", author: "Steve Jobs" },
+  { text: "The art of simplicity is a puzzle of complexity.", author: "Douglas Horton" },
+  { text: "Leadership is not about being in charge. It is about taking care of those in your charge.", author: "Simon Sinek" },
+  { text: "Data beats emotions.", author: "Sean Rad" },
+  { text: "If you can’t explain it simply, you don’t understand it well enough.", author: "Albert Einstein" },
+  { text: "Success is not final; failure is not fatal: It is the courage to continue that counts.", author: "Winston Churchill" },
+  { text: "Don’t worry about failure; you only have to be right once.", author: "Drew Houston" },
+  { text: "Strategy is about making choices, trade-offs; it’s about deliberately choosing to be different.", author: "Michael Porter" },
+  { text: "Great things in business are never done by one person.", author: "Steve Jobs" },
+  { text: "Make everything as simple as possible, but not simpler.", author: "Albert Einstein" },
+  { text: "The secret of getting ahead is getting started.", author: "Mark Twain" }
+];
+
+  function getRandomQuote(excludeIndex = -1) {
+  let index;
+  do {
+    index = Math.floor(Math.random() * quotes.length);
+  } while (index === excludeIndex);
+  return { quote: quotes[index], index };
+}
+
+const leftQuoteEl = document.querySelector(".left-quote");
+const rightQuoteEl = document.querySelector(".right-quote");
+
+function renderRandomQuotes() {
+  if (!leftQuoteEl || !rightQuoteEl) return;
+
+  const left = getRandomQuote();
+  const right = getRandomQuote(left.index);
+
+  leftQuoteEl.innerHTML = `
+    <p class="quote-text">“${left.quote.text}”</p>
+    <span class="quote-author">— ${left.quote.author}</span>
+  `;
+
+  rightQuoteEl.innerHTML = `
+    <p class="quote-text">“${right.quote.text}”</p>
+    <span class="quote-author">— ${right.quote.author}</span>
+  `;
+}
+
+// Initial render
+renderRandomQuotes();
+
+// Optional: rotate quotes every 8 seconds (desktop only)
+if (window.innerWidth > 1024) {
+  setInterval(renderRandomQuotes, 8000);
+}
   const isGitHubPages = window.location.hostname.includes("github.io");
 const repoName = "automation-website-";  // 👈 your repo name
 const basePath = isGitHubPages ? `/${repoName}` : "";
