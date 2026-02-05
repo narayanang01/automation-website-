@@ -485,6 +485,9 @@
 </section>
 
 <script>
+  const isGitHubPages = window.location.hostname.includes("github.io");
+const repoName = "automation-website-";  // 👈 your repo name
+const basePath = isGitHubPages ? `/${repoName}` : "";
 
 const bgColors = [
   '#f4f7fe', // soft blue
@@ -520,13 +523,13 @@ fetch('./data/blogs.json')
 
     document.getElementById('main-featured-blog').innerHTML = `
       <div class="main-featured-card">
-        <img src="${latestBlog.image}" alt="${latestBlog.title}">
+        <img src="${basePath}/${latestBlog.image}" alt="${latestBlog.title}">
         <div class="main-featured-content">
           <small>Latest Read</small>
-          <h2>${latestBlog.title}</h2>
-          <p>${latestBlog.excerpt}</p>
-          <small>${latestBlog.date}</small><br>
-          <a href="${latestBlog.url}">Read full blog →</a>
+          <h2>${basePath}/${latestBlog.title}</h2>
+          <p>${basePath}/${latestBlog.excerpt}</p>
+          <small>${basePath}/${latestBlog.date}</small><br>
+          <a href="${basePath}/${latestBlog.url}">Read full blog →</a>
         </div>
       </div>
     `;
