@@ -521,18 +521,18 @@ fetch('./data/blogs.json')
     // 2️⃣ Latest blog (main featured)
     const latestBlog = blogs[0];
 
-    document.getElementById('main-featured-blog').innerHTML = `
-      <div class="main-featured-card">
-        <img src="${basePath}/${latestBlog.image}" alt="${latestBlog.title}">
-        <div class="main-featured-content">
-          <small>Latest Read</small>
-          <h2>${basePath}/${latestBlog.title}</h2>
-          <p>${basePath}/${latestBlog.excerpt}</p>
-          <small>${basePath}/${latestBlog.date}</small><br>
-          <a href="${basePath}/${latestBlog.url}">Read full blog →</a>
-        </div>
-      </div>
-    `;
+document.getElementById('main-featured-blog').innerHTML = `
+  <div class="main-featured-card">
+    <img src="${basePath}/${latestBlog.image}" alt="${latestBlog.title}">
+    <div class="main-featured-content">
+      <small>Latest Read</small>
+      <h2>${latestBlog.title}</h2>
+      <p>${latestBlog.excerpt}</p>
+      <small>${latestBlog.date}</small><br>
+      <a href="${basePath}/${latestBlog.url}">Read full blog →</a>
+    </div>
+  </div>
+`;
 
     // 3️⃣ Remove latest blog from list
     const remainingBlogs = blogs.slice(1);
@@ -551,17 +551,17 @@ fetch('./data/blogs.json')
     // shuffle once (no repeat)
     featuredBlogs.sort(() => Math.random() - 0.5);
 
-    function renderFeatured(blog) {
-      featuredContainer.innerHTML = `
-        <div class="featured-card swipe-left" style="background:${bgColors[currentIndex % bgColors.length]}">
-          <img src="${blog.image}" alt="${blog.title}">
-          <div class="featured-content">
-            <h3>${blog.title}</h3>
-            <p>${blog.excerpt}</p>
-            <small>${blog.date}</small>
-          </div>
-        </div>
-      `;
+function renderFeatured(blog) {
+  featuredContainer.innerHTML = `
+    <div class="featured-card swipe-left" style="background:${bgColors[currentIndex % bgColors.length]}">
+      <img src="${basePath}/${blog.image}" alt="${blog.title}">
+      <div class="featured-content">
+        <h3>${blog.title}</h3>
+        <p>${blog.excerpt}</p>
+        <small>${blog.date}</small>
+      </div>
+    </div>
+  `;
 
       featuredContainer.onclick = () => {
         window.location.href = 'all-blogs.html';
@@ -585,7 +585,7 @@ fetch('./data/blogs.json')
   
     // 7️⃣ Render remaining blogs (exclude featured ones)
     const usedUrls = new Set(featuredBlogs.map(b => b.url));
-    const listContainer = document.getElementById('blog-list');
+   
     listContainer.innerHTML = '';
 
     remainingBlogs.forEach(blog => {
