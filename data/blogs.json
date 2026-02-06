@@ -1,45 +1,10 @@
 [
   {
-    "title": "The Architecture Of Resilient Systems",
+    "title": "The Strategic Blueprint For Hyper Scale Enterprise Architecture",
     "date": "2026-02-06",
     "image": "/assets/images/blog.jpg",
-    "url": "/blogs/2026-02-06-the-architecture-of-resilient-systems.html",
-    "excerpt": "The Architecture Of Resilient Systems"
-  },
-  {
-    "title": "The Future Of Distributed Computing Mesh Networks And Zero Trust",
-    "date": "2026-02-06",
-    "image": "/assets/images/blog.jpg",
-    "url": "/blogs/2026-02-06-the-future-of-distributed-computing-mesh-networks-and-zero-trust.html",
-    "excerpt": "The Future Of Distributed Computing Mesh Networks And Zero Trust"
-  },
-  {
-    "title": "The Future Of Scalable Architecture Embracing The Serverless Edge",
-    "date": "2026-02-06",
-    "image": "/assets/images/blog.jpg",
-    "url": "/blogs/2026-02-06-the-future-of-scalable-architecture-embracing-the-serverless-edge.html",
-    "excerpt": "The Future Of Scalable Architecture Embracing The Serverless Edge"
-  },
-  {
-    "title": "The Next Generation Of Enterprise Workflow Optimization Focus On Core Directives",
-    "date": "2026-02-06",
-    "image": "/assets/images/blog.jpg",
-    "url": "/blogs/2026-02-06-the-next-generation-of-enterprise-workflow-optimization-focus-on-core-directives.html",
-    "excerpt": "The Next Generation Of Enterprise Workflow Optimization Focus On Core Directives"
-  },
-  {
-    "title": "The Role Of Data Standardization In Modern Analytics",
-    "date": "2026-02-06",
-    "image": "/assets/images/blog.jpg",
-    "url": "/blogs/2026-02-06-the-role-of-data-standardization-in-modern-analytics.html",
-    "excerpt": "The Role Of Data Standardization In Modern Analytics"
-  },
-  {
-    "title": "The Role Of Ecosystem Resilience In Modern Infrastructure Planning",
-    "date": "2026-02-06",
-    "image": "/assets/images/blog.jpg",
-    "url": "/blogs/2026-02-06-the-role-of-ecosystem-resilience-in-modern-infrastructure-planning.html",
-    "excerpt": "The Role Of Ecosystem Resilience In Modern Infrastructure Planning"
+    "url": "/blogs/2026-02-06-the-strategic-blueprint-for-hyper-scale-enterprise-architecture.html",
+    "excerpt": "The Strategic Blueprint For Hyper Scale Enterprise Architecture"
   },
   {
     "title": "The Role Of Sub Ghz Connectivity In Modern Iot Deployments",
@@ -49,18 +14,46 @@
     "excerpt": "The Role Of Sub Ghz Connectivity In Modern Iot Deployments"
   },
   {
-    "title": "The Strategic Blueprint For Hyper Scale Enterprise Architecture",
+    "title": "The Role Of Ecosystem Resilience In Modern Infrastructure Planning",
     "date": "2026-02-06",
     "image": "/assets/images/blog.jpg",
-    "url": "/blogs/2026-02-06-the-strategic-blueprint-for-hyper-scale-enterprise-architecture.html",
-    "excerpt": "The Strategic Blueprint For Hyper Scale Enterprise Architecture"
+    "url": "/blogs/2026-02-06-the-role-of-ecosystem-resilience-in-modern-infrastructure-planning.html",
+    "excerpt": "The Role Of Ecosystem Resilience In Modern Infrastructure Planning"
   },
   {
-    "title": "The Future Of Hybrid Data Architectures Balancing Speed And Security",
-    "date": "2026-02-05",
+    "title": "The Role Of Data Standardization In Modern Analytics",
+    "date": "2026-02-06",
     "image": "/assets/images/blog.jpg",
-    "url": "/blogs/2026-02-05-the-future-of-hybrid-data-architectures-balancing-speed-and-security.html",
-    "excerpt": "The Future Of Hybrid Data Architectures Balancing Speed And Security"
+    "url": "/blogs/2026-02-06-the-role-of-data-standardization-in-modern-analytics.html",
+    "excerpt": "The Role Of Data Standardization In Modern Analytics"
+  },
+  {
+    "title": "The Next Generation Of Enterprise Workflow Optimization Focus On Core Directives",
+    "date": "2026-02-06",
+    "image": "/assets/images/blog.jpg",
+    "url": "/blogs/2026-02-06-the-next-generation-of-enterprise-workflow-optimization-focus-on-core-directives.html",
+    "excerpt": "The Next Generation Of Enterprise Workflow Optimization Focus On Core Directives"
+  },
+  {
+    "title": "The Future Of Scalable Architecture Embracing The Serverless Edge",
+    "date": "2026-02-06",
+    "image": "/assets/images/blog.jpg",
+    "url": "/blogs/2026-02-06-the-future-of-scalable-architecture-embracing-the-serverless-edge.html",
+    "excerpt": "The Future Of Scalable Architecture Embracing The Serverless Edge"
+  },
+  {
+    "title": "The Future Of Distributed Computing Mesh Networks And Zero Trust",
+    "date": "2026-02-06",
+    "image": "/assets/images/blog.jpg",
+    "url": "/blogs/2026-02-06-the-future-of-distributed-computing-mesh-networks-and-zero-trust.html",
+    "excerpt": "The Future Of Distributed Computing Mesh Networks And Zero Trust"
+  },
+  {
+    "title": "The Architecture Of Resilient Systems",
+    "date": "2026-02-06",
+    "image": "/assets/images/blog.jpg",
+    "url": "/blogs/2026-02-06-the-architecture-of-resilient-systems.html",
+    "excerpt": "The Architecture Of Resilient Systems"
   },
   {
     "title": "The Role Of Data Standardization In Modern Analytics",
@@ -70,32 +63,11 @@
     "excerpt": "The Role Of Data Standardization In Modern Analytics"
   },
   {
-    "title": "Mastering The Triadic Sync A Trisentrix Framework For 2024",
-    "date": "2026-02-04",
+    "title": "The Future Of Hybrid Data Architectures Balancing Speed And Security",
+    "date": "2026-02-05",
     "image": "/assets/images/blog.jpg",
-    "url": "/blogs/2026-02-04-mastering-the-triadic-sync-a-trisentrix-framework-for-2024.html",
-    "excerpt": "Mastering The Triadic Sync A Trisentrix Framework For 2024"
-  },
-  {
-    "title": "The Enterprise Shift Unlocking Value In Composable Architectures",
-    "date": "2026-02-04",
-    "image": "/assets/images/blog.jpg",
-    "url": "/blogs/2026-02-04-the-enterprise-shift-unlocking-value-in-composable-architectures.html",
-    "excerpt": "The Enterprise Shift Unlocking Value In Composable Architectures"
-  },
-  {
-    "title": "The Future Of Hyper Scale Data Orchestration Principles For Trisentrix Architecture",
-    "date": "2026-02-04",
-    "image": "/assets/images/blog.jpg",
-    "url": "/blogs/2026-02-04-the-future-of-hyper-scale-data-orchestration-principles-for-trisentrix-architecture.html",
-    "excerpt": "The Future Of Hyper Scale Data Orchestration Principles For Trisentrix Architecture"
-  },
-  {
-    "title": "The Trisentrix Blueprint Scaling Enterprise Ai Beyond The Pilot Stage",
-    "date": "2026-02-04",
-    "image": "/assets/images/blog.jpg",
-    "url": "/blogs/2026-02-04-the-trisentrix-blueprint-scaling-enterprise-ai-beyond-the-pilot-stage.html",
-    "excerpt": "The Trisentrix Blueprint Scaling Enterprise Ai Beyond The Pilot Stage"
+    "url": "/blogs/2026-02-05-the-future-of-hybrid-data-architectures-balancing-speed-and-security.html",
+    "excerpt": "The Future Of Hybrid Data Architectures Balancing Speed And Security"
   },
   {
     "title": "The Unseen Shift Designing Data Architectures For Hyperscale Reliability",
@@ -105,46 +77,39 @@
     "excerpt": "The Unseen Shift Designing Data Architectures For Hyperscale Reliability"
   },
   {
-    "title": "Mastering The Modern Enterprise Strategies For Scalable Hybrid Cloud Architecture",
-    "date": "2026-02-03",
+    "title": "The Trisentrix Blueprint Scaling Enterprise Ai Beyond The Pilot Stage",
+    "date": "2026-02-04",
     "image": "/assets/images/blog.jpg",
-    "url": "/blogs/2026-02-03-mastering-the-modern-enterprise-strategies-for-scalable-hybrid-cloud-architecture.html",
-    "excerpt": "Mastering The Modern Enterprise Strategies For Scalable Hybrid Cloud Architecture"
+    "url": "/blogs/2026-02-04-the-trisentrix-blueprint-scaling-enterprise-ai-beyond-the-pilot-stage.html",
+    "excerpt": "The Trisentrix Blueprint Scaling Enterprise Ai Beyond The Pilot Stage"
   },
   {
-    "title": "Mastering The Multi Cloud Chaos The Adaptive Orchestration Framework",
-    "date": "2026-02-03",
+    "title": "The Future Of Hyper Scale Data Orchestration Principles For Trisentrix Architecture",
+    "date": "2026-02-04",
     "image": "/assets/images/blog.jpg",
-    "url": "/blogs/2026-02-03-mastering-the-multi-cloud-chaos-the-adaptive-orchestration-framework.html",
-    "excerpt": "Mastering The Multi Cloud Chaos The Adaptive Orchestration Framework"
+    "url": "/blogs/2026-02-04-the-future-of-hyper-scale-data-orchestration-principles-for-trisentrix-architecture.html",
+    "excerpt": "The Future Of Hyper Scale Data Orchestration Principles For Trisentrix Architecture"
   },
   {
-    "title": "The Architecture Of Resilience Scaling Microservices In The Enterprise",
-    "date": "2026-02-03",
+    "title": "The Enterprise Shift Unlocking Value In Composable Architectures",
+    "date": "2026-02-04",
     "image": "/assets/images/blog.jpg",
-    "url": "/blogs/2026-02-03-the-architecture-of-resilience-scaling-microservices-in-the-enterprise.html",
-    "excerpt": "The Architecture Of Resilience Scaling Microservices In The Enterprise"
+    "url": "/blogs/2026-02-04-the-enterprise-shift-unlocking-value-in-composable-architectures.html",
+    "excerpt": "The Enterprise Shift Unlocking Value In Composable Architectures"
   },
   {
-    "title": "The Future Of Enterprise Architecture Embracing Modular Monoliths",
-    "date": "2026-02-03",
+    "title": "Mastering The Triadic Sync A Trisentrix Framework For 2024",
+    "date": "2026-02-04",
     "image": "/assets/images/blog.jpg",
-    "url": "/blogs/2026-02-03-the-future-of-enterprise-architecture-embracing-modular-monoliths.html",
-    "excerpt": "The Future Of Enterprise Architecture Embracing Modular Monoliths"
+    "url": "/blogs/2026-02-04-mastering-the-triadic-sync-a-trisentrix-framework-for-2024.html",
+    "excerpt": "Mastering The Triadic Sync A Trisentrix Framework For 2024"
   },
   {
-    "title": "The Future Of Enterprise Data Integrity Strategies For 2024",
+    "title": "The Unseen Architecture Mastering State Machines In Enterprise Systems",
     "date": "2026-02-03",
     "image": "/assets/images/blog.jpg",
-    "url": "/blogs/2026-02-03-the-future-of-enterprise-data-integrity-strategies-for-2024.html",
-    "excerpt": "The Future Of Enterprise Data Integrity Strategies For 2024"
-  },
-  {
-    "title": "The Inevitable Pivot Mastering Adaptive Strategy In A Volatile Enterprise Landscape",
-    "date": "2026-02-03",
-    "image": "/assets/images/blog.jpg",
-    "url": "/blogs/2026-02-03-the-inevitable-pivot-mastering-adaptive-strategy-in-a-volatile-enterprise-landscape.html",
-    "excerpt": "The Inevitable Pivot Mastering Adaptive Strategy In A Volatile Enterprise Landscape"
+    "url": "/blogs/2026-02-03-the-unseen-architecture-mastering-state-machines-in-enterprise-systems.html",
+    "excerpt": "The Unseen Architecture Mastering State Machines In Enterprise Systems"
   },
   {
     "title": "The Tri Core Integrity Model Securing Autonomous Enterprise Systems In The Age Of Ai",
@@ -154,10 +119,45 @@
     "excerpt": "The Tri Core Integrity Model Securing Autonomous Enterprise Systems In The Age Of Ai"
   },
   {
-    "title": "The Unseen Architecture Mastering State Machines In Enterprise Systems",
+    "title": "The Inevitable Pivot Mastering Adaptive Strategy In A Volatile Enterprise Landscape",
     "date": "2026-02-03",
     "image": "/assets/images/blog.jpg",
-    "url": "/blogs/2026-02-03-the-unseen-architecture-mastering-state-machines-in-enterprise-systems.html",
-    "excerpt": "The Unseen Architecture Mastering State Machines In Enterprise Systems"
+    "url": "/blogs/2026-02-03-the-inevitable-pivot-mastering-adaptive-strategy-in-a-volatile-enterprise-landscape.html",
+    "excerpt": "The Inevitable Pivot Mastering Adaptive Strategy In A Volatile Enterprise Landscape"
+  },
+  {
+    "title": "The Future Of Enterprise Data Integrity Strategies For 2024",
+    "date": "2026-02-03",
+    "image": "/assets/images/blog.jpg",
+    "url": "/blogs/2026-02-03-the-future-of-enterprise-data-integrity-strategies-for-2024.html",
+    "excerpt": "The Future Of Enterprise Data Integrity Strategies For 2024"
+  },
+  {
+    "title": "The Future Of Enterprise Architecture Embracing Modular Monoliths",
+    "date": "2026-02-03",
+    "image": "/assets/images/blog.jpg",
+    "url": "/blogs/2026-02-03-the-future-of-enterprise-architecture-embracing-modular-monoliths.html",
+    "excerpt": "The Future Of Enterprise Architecture Embracing Modular Monoliths"
+  },
+  {
+    "title": "The Architecture Of Resilience Scaling Microservices In The Enterprise",
+    "date": "2026-02-03",
+    "image": "/assets/images/blog.jpg",
+    "url": "/blogs/2026-02-03-the-architecture-of-resilience-scaling-microservices-in-the-enterprise.html",
+    "excerpt": "The Architecture Of Resilience Scaling Microservices In The Enterprise"
+  },
+  {
+    "title": "Mastering The Multi Cloud Chaos The Adaptive Orchestration Framework",
+    "date": "2026-02-03",
+    "image": "/assets/images/blog.jpg",
+    "url": "/blogs/2026-02-03-mastering-the-multi-cloud-chaos-the-adaptive-orchestration-framework.html",
+    "excerpt": "Mastering The Multi Cloud Chaos The Adaptive Orchestration Framework"
+  },
+  {
+    "title": "Mastering The Modern Enterprise Strategies For Scalable Hybrid Cloud Architecture",
+    "date": "2026-02-03",
+    "image": "/assets/images/blog.jpg",
+    "url": "/blogs/2026-02-03-mastering-the-modern-enterprise-strategies-for-scalable-hybrid-cloud-architecture.html",
+    "excerpt": "Mastering The Modern Enterprise Strategies For Scalable Hybrid Cloud Architecture"
   }
 ]
