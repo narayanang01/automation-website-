@@ -1,5 +1,12 @@
 [
   {
+    "title": "Blog Post Header Placeholder",
+    "date": "2026-02-06",
+    "image": "/assets/images/blog.jpg",
+    "url": "/blogs/2026-02-06-blog-post-header-placeholder.html",
+    "excerpt": "Blog Post Header Placeholder"
+  },
+  {
     "title": "The Architecture Of Resilient Systems",
     "date": "2026-02-06",
     "image": "/assets/images/blog.jpg",
@@ -14,18 +21,18 @@
     "excerpt": "The Role Of Data Standardization In Modern Analytics"
   },
   {
+    "title": "The Role Of Ecosystem Resilience In Modern Infrastructure Planning",
+    "date": "2026-02-06",
+    "image": "/assets/images/blog.jpg",
+    "url": "/blogs/2026-02-06-the-role-of-ecosystem-resilience-in-modern-infrastructure-planning.html",
+    "excerpt": "The Role Of Ecosystem Resilience In Modern Infrastructure Planning"
+  },
+  {
     "title": "The Role Of Sub Ghz Connectivity In Modern Iot Deployments",
     "date": "2026-02-06",
     "image": "/assets/images/blog.jpg",
     "url": "/blogs/2026-02-06-the-role-of-sub-ghz-connectivity-in-modern-iot-deployments.html",
     "excerpt": "The Role Of Sub Ghz Connectivity In Modern Iot Deployments"
-  },
-  {
-    "title": "Title Placeholder",
-    "date": "2026-02-06",
-    "image": "/assets/images/blog.jpg",
-    "url": "/blogs/2026-02-06-title-placeholder.html",
-    "excerpt": "Title Placeholder"
   },
   {
     "title": "The Future Of Hybrid Data Architectures Balancing Speed And Security",
