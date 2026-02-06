@@ -1,10 +1,31 @@
 [
   {
+    "title": "Blog Post Header Placeholder",
+    "date": "2026-02-06",
+    "image": "/assets/images/blog.jpg",
+    "url": "/blogs/2026-02-06-blog-post-header-placeholder.html",
+    "excerpt": "Blog Post Header Placeholder"
+  },
+  {
+    "title": "The Architecture Of Resilient Systems",
+    "date": "2026-02-06",
+    "image": "/assets/images/blog.jpg",
+    "url": "/blogs/2026-02-06-the-architecture-of-resilient-systems.html",
+    "excerpt": "The Architecture Of Resilient Systems"
+  },
+  {
     "title": "The Future Of Distributed Computing Mesh Networks And Zero Trust",
     "date": "2026-02-06",
     "image": "/assets/images/blog.jpg",
     "url": "/blogs/2026-02-06-the-future-of-distributed-computing-mesh-networks-and-zero-trust.html",
     "excerpt": "The Future Of Distributed Computing Mesh Networks And Zero Trust"
+  },
+  {
+    "title": "The Future Of Scalable Architecture Embracing The Serverless Edge",
+    "date": "2026-02-06",
+    "image": "/assets/images/blog.jpg",
+    "url": "/blogs/2026-02-06-the-future-of-scalable-architecture-embracing-the-serverless-edge.html",
+    "excerpt": "The Future Of Scalable Architecture Embracing The Serverless Edge"
   },
   {
     "title": "The Role Of Data Standardization In Modern Analytics",
