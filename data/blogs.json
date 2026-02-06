@@ -1,12 +1,5 @@
 [
-  {
-    "title": "Blog Post",
-    "date": "2026-02-06",
-    "image": "/assets/images/blog.jpg",
-    "url": "/blogs/2026-02-06-blog-post.html",
-    "excerpt": "Blog Post"
-  },
-  {
+ {
     "title": "The Architecture Of Resilient Systems",
     "date": "2026-02-06",
     "image": "/assets/images/blog.jpg",
