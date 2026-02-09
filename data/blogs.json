@@ -1,5 +1,12 @@
 [
   {
+    "title": "Blog Post",
+    "date": "2026-02-08",
+    "image": "/assets/images/blog.jpg",
+    "url": "/blogs/2026-02-08-blog-post.html",
+    "excerpt": "Blog Post"
+  },
+  {
     "title": "The Strategic Blueprint For Hyper Scale Enterprise Architecture",
     "date": "2026-02-06",
     "image": "/assets/images/blog.jpg",
