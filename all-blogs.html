@@ -30,6 +30,14 @@
         padding: 0 24px;
       }
 
+      .blogs-subtitle {
+        text-align: center;
+        max-width: 640px;
+        margin: -30px auto 50px;
+        font-size: 17px;
+        color: #475569;
+      }
+
       h1 {
         text-align: center;
         font-size: 36px;
@@ -368,6 +376,92 @@
           object-fit: contain;
         }
       }
+
+      /* ================= BLOG CARD POLISH ================= */
+
+      /* Date pill */
+      .blog-date {
+        display: inline-block;
+        margin-bottom: 10px;
+        padding: 4px 12px;
+        font-size: 12px;
+        font-weight: 600;
+        border-radius: 999px;
+        background: rgba(63, 120, 224, 0.12);
+        color: #3f78e0;
+      }
+
+      .blog-date {
+        max-width: fit-content;
+      }
+
+      /* Stronger title hierarchy */
+      .blog-card h3 {
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 1.35;
+        margin-bottom: 10px;
+        color: #0f172a;
+      }
+
+      /* Slightly tighter paragraph */
+      .blog-card p {
+        font-size: 14.5px;
+        line-height: 1.55;
+        margin-bottom: 12px;
+      }
+
+      /* CTA polish */
+      .blog-card a {
+        display: inline-block;
+        transition: transform 0.2s ease;
+      }
+
+      .blog-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 24px 50px rgba(15, 23, 42, 0.12);
+      }
+
+      /* Subtle top accent */
+      .blog-card {
+        position: relative;
+      }
+
+      .blog-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 4px;
+        width: 100%;
+        background: rgba(63, 120, 224, 0.35);
+        border-radius: 12px 12px 0 0;
+      }
+
+      .blogs-grid {
+        align-items: stretch;
+      }
+
+      .blog-card {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .blog-card p {
+        flex-grow: 1;
+      }
+
+      .blog-card p {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      .blog-card {
+        padding: 22px; /* instead of 26px */
+      }
+
     </style>
   </head>
 
@@ -504,7 +598,9 @@
     <section class="page-bg">
       <div class="wrapper">
         <h1>All Blogs</h1>
-
+          <p class="blogs-subtitle">
+            Insights on architecture, scalability, and enterprise systems
+          </p>
         <div id="all-blogs-list" class="blogs-grid"></div>
         <div id="pagination"></div>
       </div>
@@ -751,8 +847,7 @@
       "#faf5ff",
     ];
 
-    const FIRST_PAGE_COUNT = 6;
-    const OTHER_PAGE_COUNT = 9;
+    const BLOGS_PER_PAGE = 6;
 
     // current page from URL (?page=2)
     const page =
@@ -775,16 +870,9 @@
           if (why) why.style.display = "none";
         }
 
-        // Decide slice range
-        let start, end;
+        const start = (page - 1) * BLOGS_PER_PAGE;
+        const end = start + BLOGS_PER_PAGE;
 
-        if (page === 1) {
-          start = 0;
-          end = FIRST_PAGE_COUNT; // 6 blogs
-        } else {
-          start = FIRST_PAGE_COUNT + (page - 2) * OTHER_PAGE_COUNT;
-          end = start + OTHER_PAGE_COUNT; // 9 blogs
-        }
 
         const visible = blogs.slice(start, end);
 
@@ -799,30 +887,76 @@
 
         visible.forEach((blog, index) => {
           container.innerHTML += `
-    <div class="blog-card"
-      style="background:${bgColors[index % bgColors.length]}">
-      <h3>${blog.title}</h3>
-      <small>${blog.date}</small>
-      <p>${blog.excerpt}</p>
-      <a href="${basePath}/${blog.url}">Read full blog →</a>
-    </div>
-  `;
+            <div class="blog-card"
+              style="background:${bgColors[index % bgColors.length]}">
+
+              <!-- BLOG IMAGE -->
+              <img 
+                src="${basePath}/${blog.image}" 
+                alt="${blog.title}" 
+                class="blog-image"
+              />
+
+              <!-- DATE -->
+              <span class="blog-date">${blog.date}</span>
+
+              <!-- TITLE -->
+              <h3>${blog.title}</h3>
+
+              <!-- CTA -->
+              <a href="${basePath}/${blog.url}">
+                Read full blog →
+              </a>
+            </div>
+          `;
         });
+        
 
         // Total pages calculation
-        const remaining = blogs.length - FIRST_PAGE_COUNT;
-        const totalPages = 1 + Math.ceil(remaining / OTHER_PAGE_COUNT);
-
+        const totalPages = Math.ceil(blogs.length / BLOGS_PER_PAGE);
         // Render pagination
         pagination.innerHTML = "";
 
-        for (let i = 1; i <= totalPages; i++) {
-          pagination.innerHTML += `
-        <a href="?page=${i}" class="page-link ${i === page ? "active" : ""}">
-          ${i}
+
+      // PREVIOUS
+      if (page > 1) {
+        pagination.innerHTML += `
+          <a href="?page=${page - 1}" class="page-link">← Prev</a>
+        `;
+      }
+
+      // PREVIOUS PAGE NUMBER
+      if (page - 1 >= 1) {
+        pagination.innerHTML += `
+          <a href="?page=${page - 1}" class="page-link">
+            ${page - 1}
+          </a>
+        `;
+      }
+
+      // CURRENT PAGE
+      pagination.innerHTML += `
+        <a href="?page=${page}" class="page-link active">
+          ${page}
         </a>
       `;
-        }
+
+      // NEXT PAGE NUMBER
+      if (page + 1 <= totalPages) {
+        pagination.innerHTML += `
+          <a href="?page=${page + 1}" class="page-link">
+            ${page + 1}
+          </a>
+        `;
+      }
+
+      // NEXT
+      if (page < totalPages) {
+        pagination.innerHTML += `
+          <a href="?page=${page + 1}" class="page-link">Next →</a>
+        `;
+      }
+
       })
       .catch((err) => {
         console.error("Error loading blogs:", err);

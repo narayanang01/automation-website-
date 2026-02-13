@@ -680,7 +680,6 @@ document.getElementById('main-featured-blog').innerHTML = `
     <div class="main-featured-content">
       <small>Latest Read</small>
       <h2>${latestBlog.title}</h2>
-      <p>${latestBlog.excerpt}</p>
       <small>${latestBlog.date}</small><br>
       <a href="${basePath}/${latestBlog.url}">Read full blog →</a>
     </div>
@@ -710,7 +709,6 @@ function renderFeatured(blog) {
       <img src="${basePath}/${blog.image}" alt="${blog.title}">
       <div class="featured-content">
         <h3>${blog.title}</h3>
-        <p>${blog.excerpt}</p>
         <small>${blog.date}</small>
       </div>
     </div>
@@ -749,7 +747,6 @@ function renderFeatured(blog) {
       div.innerHTML = `
         <img src="${blog.image}" alt="${blog.title}">
         <h3>${blog.title}</h3>
-        <p>${blog.excerpt}</p>
         <small>${blog.date}</small><br>
         <a href="${blog.url}">Read full blog →</a>
       `;
