@@ -123,6 +123,44 @@
     .hero-image img {
       animation: heroFadeUp 1.2s ease-out both;
     }
+    /* ================= HERO IMAGE MOBILE FIX ================= */
+@media (max-width: 768px) {
+  .hero-image {
+    height: auto;              /* let image decide height */
+    padding: 0;
+  }
+
+  .hero-image img {
+    width: 100%;
+    height: auto;             /* prevent crop */
+    object-fit: contain;      /* show full image */
+  }
+}
+/* ================= MOBILE TYPOGRAPHY TUNING ================= */
+@media (max-width: 768px) {
+  .blog-intro h2 {
+    font-size: 20px;
+  }
+
+  .blog-intro p {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .featured-title {
+    font-size: 20px;
+  }
+
+  .section-title {
+    font-size: 20px;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
 
     @keyframes heroFadeUp {
       from {
@@ -462,6 +500,37 @@
       font-weight: 600;
       color: #1f2937;
     }
+    /* ================= MOBILE FIX: FEATURED BLOG ================= */
+@media (max-width: 768px) {
+  .main-featured-card {
+    grid-template-columns: 1fr;   /* stack image + text */
+    gap: 20px;
+  }
+
+  .main-featured-card img {
+    width: 100%;
+    max-height: 240px;           /* keep image visible */
+    object-fit: cover;
+    border-radius: 14px;
+  }
+
+  .main-featured-content h2 {
+    font-size: 20px;             /* reduce title size */
+    line-height: 1.35;
+  }
+
+  .main-featured-content small {
+    font-size: 13px;
+  }
+
+  .main-featured-content a {
+    font-size: 14px;
+  }
+
+  #main-featured-blog {
+    padding: 20px;               /* tighter padding */
+  }
+}
 
 
   </style>
