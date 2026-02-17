@@ -410,6 +410,58 @@
         line-height: 1.55;
         margin-bottom: 12px;
       }
+      /* ================= BLOG SEARCH BAR ================= */
+
+      .blogs-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 18px;
+        margin-bottom: 40px;
+      }
+
+      .blogs-search-box {
+        position: relative;
+        width: 100%;
+        max-width: 420px;
+      }
+
+      .blogs-search-box input {
+        width: 100%;
+        padding: 14px 44px 14px 16px;
+        border-radius: 14px;
+        border: 1px solid rgba(63, 120, 224, 0.25);
+        font-size: 15px;
+        outline: none;
+        background: #ffffff;
+        box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+        transition: all 0.25s ease;
+      }
+
+      .blogs-search-box input::placeholder {
+        color: #94a3b8;
+      }
+
+      .blogs-search-box input:focus {
+        border-color: #3f78e0;
+        box-shadow: 0 0 0 3px rgba(63, 120, 224, 0.15);
+      }
+
+      .blogs-search-box .search-icon {
+        position: absolute;
+        right: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 16px;
+        color: #64748b;
+        pointer-events: none;
+      }
+
+      @media (max-width: 768px) {
+        .blogs-search-box {
+          max-width: 100%;
+        }
+      }
 
       /* CTA polish */
       .blog-card a {
@@ -461,7 +513,6 @@
       .blog-card {
         padding: 22px; /* instead of 26px */
       }
-
     </style>
   </head>
 
@@ -598,9 +649,22 @@
     <section class="page-bg">
       <div class="wrapper">
         <h1>All Blogs</h1>
+
+        <div class="blogs-header">
           <p class="blogs-subtitle">
             Insights on architecture, scalability, and enterprise systems
           </p>
+
+          <div class="blogs-search-box">
+            <input
+              type="text"
+              id="blog-search"
+              placeholder="Search blogs by title..."
+              aria-label="Search blogs"
+            />
+            <span class="search-icon">🔍</span>
+          </div>
+        </div>
         <div id="all-blogs-list" class="blogs-grid"></div>
         <div id="pagination"></div>
       </div>
@@ -829,137 +893,101 @@
   </body>
 
   <script>
-    const bgColors = [
-      "#f4f7fe",
-      "#eefaf5",
-      "#fff7ed",
-      "#fef2f2",
-      "#f0f9ff",
-      "#f5f3ff",
-      "#ecfeff",
-      "#f7fee7",
-      "#fff1f2",
-      "#f8fafc",
-      "#fdf4ff",
-      "#fefce8",
-      "#eff6ff",
-      "#ecfdf5",
-      "#faf5ff",
-    ];
+        const bgColors = [
+          "#f4f7fe",
+          "#eefaf5",
+          "#fff7ed",
+          "#fef2f2",
+          "#f0f9ff",
+          "#f5f3ff",
+          "#ecfeff",
+          "#f7fee7",
+          "#fff1f2",
+          "#f8fafc",
+          "#fdf4ff",
+          "#fefce8",
+          "#eff6ff",
+          "#ecfdf5",
+          "#faf5ff",
+        ];
 
-    const BLOGS_PER_PAGE = 6;
+        const BLOGS_PER_PAGE = 6;
 
-    // current page from URL (?page=2)
-    const page =
-      parseInt(new URLSearchParams(window.location.search).get("page")) || 1;
+        // current page from URL (?page=2)
+        const page =
+          parseInt(new URLSearchParams(window.location.search).get("page")) || 1;
+
+        let allBlogs = [];
 
     fetch("./data/blogs.json")
       .then((res) => res.json())
       .then((blogs) => {
-        // Sort latest first (IMPORTANT)
         blogs.sort((a, b) => new Date(b.date) - new Date(a.date));
+        allBlogs = blogs;
 
-        const container = document.getElementById("all-blogs-list");
-        const pagination = document.getElementById("pagination");
-        const hero = document.getElementById("allblogs-hero");
-        const why = document.getElementById("allblogs-why");
-
-        // Hide hero + why on page 2+
-        if (page > 1) {
-          if (hero) hero.style.display = "none";
-          if (why) why.style.display = "none";
-        }
-
-        const start = (page - 1) * BLOGS_PER_PAGE;
-        const end = start + BLOGS_PER_PAGE;
-
-
-        const visible = blogs.slice(start, end);
-
-        // Render blogs
-        container.innerHTML = "";
-        const isGitHubPages = window.location.hostname.includes("github.io");
-        const repoName = "automation-website-"; // 👈 your repo name
-
-        const basePath = isGitHubPages ? `/${repoName}` : "";
-
-        container.innerHTML = "";
-
-        visible.forEach((blog, index) => {
-          container.innerHTML += `
-            <div class="blog-card"
-              style="background:${bgColors[index % bgColors.length]}">
-
-              <!-- BLOG IMAGE -->
-              <img 
-                src="${basePath}/${blog.image}" 
-                alt="${blog.title}" 
-                class="blog-image"
-              />
-
-              <!-- DATE -->
-              <span class="blog-date">${blog.date}</span>
-
-              <!-- TITLE -->
-              <h3>${blog.title}</h3>
-
-              <!-- CTA -->
-              <a href="${basePath}/${blog.url}">
-                Read full blog →
-              </a>
-            </div>
-          `;
-        });
-        
-
-        // Total pages calculation
-        const totalPages = Math.ceil(blogs.length / BLOGS_PER_PAGE);
-        // Render pagination
-        pagination.innerHTML = "";
-
-
-      // PREVIOUS
-      if (page > 1) {
-        pagination.innerHTML += `
-          <a href="?page=${page - 1}" class="page-link">← Prev</a>
-        `;
-      }
-
-      // PREVIOUS PAGE NUMBER
-      if (page - 1 >= 1) {
-        pagination.innerHTML += `
-          <a href="?page=${page - 1}" class="page-link">
-            ${page - 1}
-          </a>
-        `;
-      }
-
-      // CURRENT PAGE
-      pagination.innerHTML += `
-        <a href="?page=${page}" class="page-link active">
-          ${page}
-        </a>
-      `;
-
-      // NEXT PAGE NUMBER
-      if (page + 1 <= totalPages) {
-        pagination.innerHTML += `
-          <a href="?page=${page + 1}" class="page-link">
-            ${page + 1}
-          </a>
-        `;
-      }
-
-      // NEXT
-      if (page < totalPages) {
-        pagination.innerHTML += `
-          <a href="?page=${page + 1}" class="page-link">Next →</a>
-        `;
-      }
-
-      })
-      .catch((err) => {
-        console.error("Error loading blogs:", err);
+        renderBlogs(blogs);
+        setupSearch();
       });
+
+    function renderBlogs(blogs) {
+      const container = document.getElementById("all-blogs-list");
+      const pagination = document.getElementById("pagination");
+      const hero = document.getElementById("allblogs-hero");
+      const why = document.getElementById("allblogs-why");
+
+      const page =
+        parseInt(new URLSearchParams(window.location.search).get("page")) || 1;
+
+      if (page > 1) {
+        if (hero) hero.style.display = "none";
+        if (why) why.style.display = "none";
+      }
+
+      const BLOGS_PER_PAGE = 6;
+      const start = (page - 1) * BLOGS_PER_PAGE;
+      const end = start + BLOGS_PER_PAGE;
+
+      const visible = blogs.slice(start, end);
+
+      const isGitHubPages = window.location.hostname.includes("github.io");
+      const repoName = "automation-website-";
+      const basePath = isGitHubPages ? `/${repoName}` : "";
+
+      container.innerHTML = "";
+
+      visible.forEach((blog, index) => {
+        container.innerHTML += `
+          <div class="blog-card" style="background:${bgColors[index % bgColors.length]}">
+            <img src="${basePath}/${blog.image}" alt="${blog.title}" class="blog-image" />
+            <span class="blog-date">${blog.date}</span>
+            <h3>${blog.title}</h3>
+            <a href="${basePath}/${blog.url}">Read full blog →</a>
+          </div>
+        `;
+      });
+
+      const totalPages = Math.ceil(blogs.length / BLOGS_PER_PAGE);
+      pagination.innerHTML = "";
+
+      if (page > 1) pagination.innerHTML += `<a href="?page=${page - 1}" class="page-link">← Prev</a>`;
+      if (page - 1 >= 1) pagination.innerHTML += `<a href="?page=${page - 1}" class="page-link">${page - 1}</a>`;
+      pagination.innerHTML += `<a href="?page=${page}" class="page-link active">${page}</a>`;
+      if (page + 1 <= totalPages) pagination.innerHTML += `<a href="?page=${page + 1}" class="page-link">${page + 1}</a>`;
+      if (page < totalPages) pagination.innerHTML += `<a href="?page=${page + 1}" class="page-link">Next →</a>`;
+    }
+
+    function setupSearch() {
+      const searchInput = document.getElementById("blog-search");
+
+      searchInput.addEventListener("input", (e) => {
+        const query = e.target.value.toLowerCase();
+
+        const filtered = allBlogs.filter((blog) =>
+          blog.title.toLowerCase().includes(query)
+        );
+
+        renderBlogs(filtered);
+      });
+    }
   </script>
 </html>
