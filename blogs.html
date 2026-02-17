@@ -531,6 +531,66 @@ img {
     padding: 20px;               /* tighter padding */
   }
 }
+/* ================= FINAL MOBILE OVERRIDE FIX ================= */
+@media (max-width: 768px) {
+
+  /* Stack image + text vertically */
+  .main-featured-card {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+  }
+
+  /* Ensure image is visible */
+  .main-featured-card img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 220px !important;
+    object-fit: contain !important;
+    border-radius: 12px !important;
+  }
+
+  /* Reduce title size */
+  .main-featured-content h2 {
+    font-size: 18px !important;
+    line-height: 1.3 !important;
+  }
+
+  .main-featured-content small {
+    font-size: 12px !important;
+  }
+
+  .main-featured-content a {
+    font-size: 14px !important;
+  }
+
+  /* Reduce card padding */
+  #main-featured-blog {
+    padding: 16px !important;
+  }
+
+  /* Reduce intro text so image is not pushed down */
+  .blog-intro h2 {
+    font-size: 18px !important;
+  }
+
+  .blog-intro p {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+  }
+
+  /* Hero image fix */
+  .hero-image {
+    height: auto !important;
+  }
+
+  .hero-image img {
+    width: 100% !important;
+    height: auto !important;
+    object-fit: contain !important;
+  }
+}
+
 
 
   </style>
