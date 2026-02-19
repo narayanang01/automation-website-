@@ -791,7 +791,7 @@
 
 
 
-  fetch('./blogs-data/index.json')
+  fetch(`${basePath}/blogs-data/index.json`)
     .then(res => res.json())
     .then(blogs => {
 
@@ -803,7 +803,7 @@
 
       document.getElementById('main-featured-blog').innerHTML = `
         <div class="main-featured-card">
-          <img src="${latestBlog.image}" alt="${latestBlog.title}">
+          <img src="${basePath}/${latestBlog.image}" alt="${latestBlog.title}">
           <div class="main-featured-content">
             <small>Latest Read</small>
             <h2>${latestBlog.title}</h2>
@@ -873,7 +873,7 @@
         const div = document.createElement('div');
         div.className = 'blog-card';
         div.innerHTML = `
-          <img src="${blog.image}" alt="${blog.title}">
+          <img src="${basePath}/${blog.image}" alt="${blog.title}">
           <h3>${blog.title}</h3>
           <small>${blog.date}</small><br>
           <a href="${blog.url}">Read full blog →</a>
