@@ -469,8 +469,7 @@
 </div>
 
   <div class="explore-blogs-wrapper">
-    <a href="temp3.html" class="explore-blogs-btn">
-      
+    <a href="all-blogs.html" class="explore-blogs-btn">
       Explore More Blogs →
     </a>
   </div>
@@ -507,28 +506,30 @@ const bgColors = [
 
 
 
-fetch('./blogs-data/index.json')
+fetch('./data/blogs.json')
   .then(res => res.json())
   .then(blogs => {
 
-  if (!blogs.length) return;
+    if (!blogs.length) return;
 
-  blogs.sort((a, b) => new Date(b.date) - new Date(a.date));
+    // 1️⃣ Sort blogs by latest
+    blogs.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-  const latestBlog = blogs[0];
+    // 2️⃣ Latest blog (main featured)
+    const latestBlog = blogs[0];
 
-  document.getElementById('main-featured-blog').innerHTML = `
-    <div class="main-featured-card">
-      <img src="${latestBlog.image}" alt="${latestBlog.title}">
-      <div class="main-featured-content">
-        <small>Latest Read</small>
-        <h2>${latestBlog.title}</h2>
-        <small>${latestBlog.date}</small><br>
-        <a href="${latestBlog.path}">Read full blog →</a>
+    document.getElementById('main-featured-blog').innerHTML = `
+      <div class="main-featured-card">
+        <img src="${latestBlog.image}" alt="${latestBlog.title}">
+        <div class="main-featured-content">
+          <small>Latest Read</small>
+          <h2>${latestBlog.title}</h2>
+          <p>${latestBlog.excerpt}</p>
+          <small>${latestBlog.date}</small><br>
+          <a href="${latestBlog.url}">Read full blog →</a>
+        </div>
       </div>
-    </div>
-  `;
-
+    `;
 
     // 3️⃣ Remove latest blog from list
     const remainingBlogs = blogs.slice(1);
@@ -537,7 +538,7 @@ fetch('./blogs-data/index.json')
     const shuffled = remainingBlogs.sort(() => 0.5 - Math.random());
 
     // 5️⃣ Pick first 4 for Featured Reads
-    const featuredBlogs = shuffled.slice(0, 4); 
+    const featuredBlogs = shuffled.slice(0, 4);
 
     // 6️⃣ Render Featured Reads
     const featuredContainer = document.getElementById('featured-card');
