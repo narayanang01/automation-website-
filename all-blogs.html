@@ -919,7 +919,7 @@
 
         let allBlogs = [];
 
-    fetch("./data/blogs.json")
+    fetch("./blogs-data/index.json")
       .then((res) => res.json())
       .then((blogs) => {
         blogs.sort((a, b) => new Date(b.date) - new Date(a.date));
@@ -961,7 +961,7 @@
             <img src="${basePath}/${blog.image}" alt="${blog.title}" class="blog-image" />
             <span class="blog-date">${blog.date}</span>
             <h3>${blog.title}</h3>
-            <a href="${basePath}/${blog.url}">Read full blog →</a>
+            <a href="${blog.path}">Read full blog →</a>
           </div>
         `;
       });
