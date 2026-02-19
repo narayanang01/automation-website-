@@ -791,7 +791,7 @@
 
 
 
-  fetch(`${basePath}/blogs-data/index.json`)
+  fetch(`./blogs-data/index.json`)
     .then(res => res.json())
     .then(blogs => {
 
@@ -873,10 +873,10 @@
         const div = document.createElement('div');
         div.className = 'blog-card';
         div.innerHTML = `
-          <img src="${basePath}/${blog.image}" alt="${blog.title}">
+          <img src="${blog.image}" alt="${blog.title}">
           <h3>${blog.title}</h3>
           <small>${blog.date}</small><br>
-          <a href="${basePath}/${blog.path}">Read full blog →</a>
+          <a href="${blog.path}">Read full blog →</a>
         `;
         listContainer.appendChild(div);
       });
