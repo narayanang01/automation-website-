@@ -808,7 +808,7 @@
             <small>Latest Read</small>
             <h2>${latestBlog.title}</h2>
             <small>${latestBlog.date}</small><br>
-            <a href="${latestBlog.path}">Read full blog →</a>
+            <a href="${basePath}/${latestBlog.path}">Read full blog →</a>
           </div>
         </div>
       `;
@@ -862,25 +862,6 @@
       }, 5000);
 
     
-      // 7️⃣ Render remaining blogs (exclude featured ones)
-      const usedUrls = new Set(featuredBlogs.map(b => b.url));
-    
-      listContainer.innerHTML = '';
-
-      remainingBlogs.forEach(blog => {
-        if (usedUrls.has(blog.url)) return;
-
-        const div = document.createElement('div');
-        div.className = 'blog-card';
-        div.innerHTML = `
-          <img src="${basePath}/${blog.image}" alt="${blog.title}">
-          <h3>${blog.title}</h3>
-          <small>${blog.date}</small><br>
-          <a href="${blog.url}">Read full blog →</a>
-        `;
-        listContainer.appendChild(div);
-      });
-
     })
     .catch(() => {
       document.getElementById('blog-list').innerHTML = '<p>Error loading blogs</p>';
